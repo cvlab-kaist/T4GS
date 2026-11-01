@@ -1,4 +1,4 @@
-import os
+import shutil
 from pathlib import Path
 from typing import Any, Optional
 
@@ -13,7 +13,7 @@ class LocalLogger(Logger):
     def __init__(self) -> None:
         super().__init__()
         self.experiment = None
-        os.system(f"rm -r {LOG_PATH}")
+        shutil.rmtree(LOG_PATH, ignore_errors=True)
 
     @property
     def name(self):
